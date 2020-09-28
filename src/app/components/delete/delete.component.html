@@ -1,0 +1,27 @@
+<div class="py-3 px-4 center">
+	<h1 class="red b-bottom pb-2">Delete Employee ?</h1>
+	<form (ngSubmit)="delete()">
+		<table class="left">
+			<tr>
+				<td>First name</td>
+				<td>{{ employee.firstName }}</td>
+			</tr>
+			<tr>
+				<td>Last name</td>
+				<td>{{ employee.lastName }}</td>
+			</tr>
+			<tr>
+				<td>Age</td>
+				<td>{{ employee.age }}</td>
+			</tr>
+			<tr>
+				<td>Position</td>
+				<td>{{ employee.position }}</td>
+			</tr>
+		</table>
+		<div class="my-3">
+			<button class="px-3 py-1 mr-3 btn-blue" type="button" (click)="cancel()">Cancel</button>
+			<button class="px-3 py-1 mr-3 btn-red" type="submit">Delete</button>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,14 @@
+<div class="center">
+	<p class="blue heading">Voice Commands</p>
+	<div *ngIf="isListening">
+		<p class="speak">App is Listening</p>
+	</div>
+	<div *ngIf="!isListening">
+		<button class="px-3 py-1 btn-red mic" (click)="start()">
+			<ion-icon name="mic-outline"></ion-icon>
+		</button>
+	</div>
+	<div class="speech">
+		<p>{{ transcript }}</p>
+	</div>
+</div>

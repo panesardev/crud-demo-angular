@@ -1,1 +1,193 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'assets/css/bootstrap.grid.css';
+@import 'assets/css/bootstrap.utilities.css';
+@import 'assets/css/modal.css';
+
+:root {
+	--red: #f5315b;
+	--hvr-red: #cf2c50;
+	--light-red: #f5315b17;
+
+	--green: #33d370;
+	--hvr-green: #30c268;
+	--light-green: #33d37017;
+
+	--blue: #4285F4;
+	--hvr-blue: #3b76d4;
+	--light-blue: #4285F417;
+	
+	--cyan: #11ECE5;
+	--hvr-cyan: #14ddd6;
+	--light-cyan: #11ECE517;
+	
+	--teal: #42cfd1;
+	--hvr-teal: #40c0c2;
+	--light-teal: #0adbdf17;
+
+	--grey: #4d5d66;
+	--light: #F7FAFC;
+	--dark: #1D2636;
+	--text: #a5bcdd;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'nunito';
+	background-color: var(--dark);
+	color: var(--text);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+
+button:hover, a:hover {
+	cursor: pointer;
+}
+
+a, a:hover, a:focus {
+	color: var(--blue);
+}
+
+.bg {
+	background-color: rgb(20, 22, 43);
+	box-shadow: 0 0 10px #191f22;
+	border-radius: 5px;
+}
+
+.b-bottom {
+	border-bottom: .1rem solid var(--blue);
+}
+
+.text { color: var(--text); }
+.grey { color: var(--grey); }
+.red { color: var(--red); }
+.green { color: var(--green); }
+.blue { color: var(--blue); }
+.teal { color: var(--teal); }
+.cyan { color: var(--cyan); }
+.light { color: var(--light); }
+
+.bg-light { background-color: var(--light); }
+.bg-red { background-color: var(--red); }
+.bg-cyan { background-color: var(--cyan); }
+.bg-blue { background-color: var(--blue); }
+.bg-green { background-color: var(--green); }
+.bg-teal { background-color: var(--teal); }
+.bg-none { background-color: transparent; }
+
+.center { text-align: center; }
+.left {	text-align: left; }
+.right { text-align: right; }
+
+input {
+	border-radius: 3px;
+	border: .1rem solid transparent;
+	outline: none;
+	transition: .2s;
+	color: var(--text);
+	background-color: var(--light-blue);
+	
+	&::placeholder {
+		color: #677a94;
+		opacity: 1; /* Firefox */
+	}
+	
+	&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		color: #677a94;
+	}
+	
+	&::-ms-input-placeholder { /* Microsoft Edge */
+		color: #677a94;
+	}
+}
+
+button {
+	border-radius: 3px;
+	border: none;
+	transition: .2s;
+	outline: none;
+	color: var(--light);
+
+	&:hover {
+		box-shadow: 0 0 10px var(--light);
+	}
+	&.btn-light {
+		background-color: rgb(237, 241, 245);
+	}
+	&.btn-light:hover {		
+		background-color: rgb(228, 233, 238);
+		box-shadow: 0 0 10px var(--light);
+	}
+	
+	&.btn-red {
+		background-color: var(--red)
+	}
+	&.btn-red:hover {		
+		background-color: var(--hvr-red);
+		box-shadow: 0 0 10px var(--red);
+	}
+		
+	&.btn-cyan {
+		background-color: var(--cyan);
+		color: var(--dark);
+	}
+	&.btn-cyan:hover {		
+		background-color: var(--hvr-cyan);
+		box-shadow: 0 0 10px var(--cyan);
+	}
+	
+	&.btn-blue {
+		background-color: var(--blue);
+	}
+	&.btn-blue:hover {		
+		background-color: var(--hvr-blue);
+		box-shadow: 0 0 10px var(--blue);
+	}
+	
+	&.btn-green {
+		background-color: var(--green);
+	}
+	&.btn-green:hover {		
+		background-color: var(--hvr-green);
+		box-shadow: 0 0 10px var(--green);
+	}
+	
+	&.btn-teal {
+		background-color: var(--teal);
+	}
+	&.btn-teal:hover {		
+		background-color: var(--hvr-teal);
+		box-shadow: 0 0 10px var(--teal);
+	}
+}
+
+.hvr-pointer:hover {
+	cursor: pointer;
+}
+
+
+table {
+	width: 100%;
+}
+
+table thead tr td {
+	padding: 13px 20px;
+}
+
+table tr td {
+	padding: 10px 20px;
+}
+
+table thead tr {
+	background-color: var(--blue);
+	color: var(--light);
+}
+
+table tbody tr:nth-child(even){ 
+	background-color: var(--light-blue);
+}

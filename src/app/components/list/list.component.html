@@ -1,0 +1,67 @@
+<section class="animate__animated animate__fadeIn animate__faster">
+	<div class="my-3">
+		<button class="px-3 py-1 btn-green float-right mic" (click)="showVoice = true">
+			<i class="fas fa-microphone"></i>
+		</button>
+		<button class="px-3 py-1 btn-blue float-right mr-3" (click)="showInsert = true">Add new</button>
+		<input type="text" class="px-3 py-1" [(ngModel)]="search" 
+			name="searchField" placeholder="Search employees . . .">
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<td class="center">Employee ID</td>
+				<td>First name</td>
+				<td>Last name</td>
+				<td class="center">Age</td>
+				<td class="center">Gender</td>
+				<td>Position</td>
+				<td><span>Actions</span></td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let employee of employees | filter:search; let i = index;">
+				<td class="center">{{ employee.id }}</td>
+				<td>{{ employee.firstName }}</td>
+				<td>{{ employee.lastName }}</td>
+				<td class="center">{{ employee.age }}</td>
+				<td class="center">{{ employee.gender }}</td>
+				<td>{{ employee.position }}</td>
+				<td>
+					<button (click)="showUpdate = true; selectEmployee = employee" 
+						class="px-3 py-1 btn-blue mr-2">Update</button>
+					<button (click)="showDelete = true; selectEmployee = employee" 
+						class="px-3 py-1 btn-red">Delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!-- Insert Modal -->
+	<div class="modal" *ngIf="showInsert" (click)="closeModal($event)">
+		<div class="content bg animate__animated animate__fadeInUp animate__faster">
+			<app-insert (close)="showInsert = false"></app-insert>
+		</div>
+	</div>
+	
+	<!-- Update Modal -->
+	<div class="modal" *ngIf="showUpdate" (click)="closeModal($event)">
+		<div class="content bg animate__animated animate__fadeInUp animate__faster">
+			<app-update [employee]="selectEmployee"></app-update>
+		</div>
+	</div>
+	
+	<!-- Delete Modal -->
+	<div class="modal" *ngIf="showDelete" (click)="closeModal($event)">
+		<div class="content bg animate__animated animate__fadeInUp animate__faster">
+			<app-delete	[employee]="selectEmployee" (close)="showDelete = false"></app-delete>
+		</div>
+	</div>
+	
+	<!-- Voice Modal -->
+	<div class="modal" *ngIf="showVoice" (click)="closeModal($event)">
+		<div class="content animate__animated animate__fadeInUp animate__faster">
+			<app-voice (close)="showVoice = false"></app-voice>
+		</div>
+	</div>
+</section>
