@@ -9,20 +9,19 @@ import { VoiceService } from '../../shared/voice.service';
 export class VoiceComponent implements OnInit, OnDestroy {
 
 	@Output() close = new EventEmitter();
-
-	private recognition = new window['webkitSpeechRecognition'];
 	
+	private recognition = new window['webkitSpeechRecognition'];
+
 	transcript: string = '';
 	isListening: boolean = true;
 
 	constructor(private voiceService: VoiceService) { }
 
-	ngOnInit(): void {
-		this.start();
-		this.recognition.addEventListener('result', (e: SpeechRecognitionEvent) => {
+	ngOnInit(): void {		
+		this.recognition.addEventListener('result', (e) => {
 			this.transcript = Array.from(e.results)
-				.map((result) => result[0])
-				.map((result) => result.transcript)
+				.map(result => result[0])
+				.map(result => result.transcript)
 				.join('');
 		});
 		this.recognition.addEventListener('end', () => {
@@ -30,7 +29,12 @@ export class VoiceComponent implements OnInit, OnDestroy {
 				this.recognition.stop();
 			}
 			this.isListening = false;
+			// process transcript
+			if (this.verifyTranscript()) {
+				this.voiceService.process(this.transcript);
+			}
 		});
+		this.start();
 	}
 
 	start(): void {
@@ -39,13 +43,16 @@ export class VoiceComponent implements OnInit, OnDestroy {
 	}
 
 	stop(): void {
+		this.isListening = false;
 		this.recognition.stop();
 	}
 
-	verifyTranscript(): void {
-		if (this.transcript === '' || this.transcript === ' ') {
-			this.transcript = 'Invalid Command, Please try again'
+	verifyTranscript(): boolean {
+		if (!this.transcript || this.transcript === '' || this.transcript === ' ') {
+			this.transcript = 'Invalid Command, Please try again';
+			return false;
 		}
+		else return true;
 	}
 
 	ngOnDestroy(): void {
