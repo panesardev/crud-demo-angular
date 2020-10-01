@@ -5,9 +5,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
-import { VoiceComponent } from './components/voice/voice.component';
-
-import { VoiceService } from './shared/voice.service';
 import { EmployeeService } from './shared/employee.service';
 
 import { UpdateComponent } from './components/update/update.component';
@@ -19,7 +16,6 @@ import { ListComponent } from './components/list/list.component';
 @NgModule({
 	declarations: [
 		AppComponent,
-		VoiceComponent,
 		UpdateComponent,
 		DeleteComponent,
 		InsertComponent,
@@ -33,7 +29,6 @@ import { ListComponent } from './components/list/list.component';
 		FormsModule
 	],
 	providers: [
-		VoiceService,
 		EmployeeService
 	],
 	schemas: [ CUSTOM_ELEMENTS_SCHEMA ],

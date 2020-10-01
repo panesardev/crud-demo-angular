@@ -15,7 +15,6 @@ export class ListComponent implements OnInit {
 	showInsert: boolean;
 	showUpdate: boolean;
 	showDelete: boolean;
-	showVoice: boolean;
 
 	search: string;
 	
@@ -28,10 +27,7 @@ export class ListComponent implements OnInit {
 	closeModal(event: any): void {
 		const classes: string[] = event.target.className.split(' ');
 		if (classes.includes('modal')) {
-			this.showInsert = 
-			this.showUpdate = 
-			this.showDelete = 
-			this.showVoice = false;			
+			this.showInsert = this.showUpdate = this.showDelete = false;			
 		}		
 	}
 
